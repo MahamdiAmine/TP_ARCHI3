@@ -1,0 +1,113 @@
+              
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BY MAHAMDI AMINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry}
+\usepackage[myheadings]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{fourier}
+\usepackage[protrusion=true, expansion=true]{microtype}
+\usepackage[french,english]{babel}
+\usepackage{sectsty}
+\usepackage{url, lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\onehalfspacing
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+%-------------------------------------------------------------------------------
+% HEADER & FOOTER
+%-------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\setlength\headheight{15pt}
+\fancyhead[L]{Projet Archi }
+\fancyhead[R]{Esi.dz}
+\fancyfoot[R]{Page \thepage\ sur \pageref{LastPage}}
+%-------------------------------------------------------------------------------
+% TITLE PAGE
+%-------------------------------------------------------------------------------
+
+\begin{document}
+	\renewcommand{\contentsname}{Table des Matières}
+	\author{
+		Mahamdi Mohammed \\ 
+		Hammia Abderahman \\ \\
+		\textbf{\emph{Groupe :05}}\\
+			}      
+	\date{} 
+	
+	\title{  \textsc{Rapport  }
+		\\ [2.0cm]
+		\HRule{0.5pt} \\
+		\LARGE \textbf{\uppercase{Architectures Parallèles}}
+		\HRule{2pt} \\ [0.5cm]
+		\normalsize \today \vspace*{5\baselineskip}}	
+	\maketitle
+	\tableofcontents
+	\renewcommand{\contentsname}
+	\newpage
+	
+	%-------------------------------------------------------------------------------
+	% Section title formatting
+	\sectionfont{\scshape}
+	%-----------------------------------------------------------------------------
+	
+	%-------------------------------------------------------------------------------
+	% intro
+	%-------------------------------------------------------------------------------
+	\newpage
+	\section*{Introduction}
+	 \addcontentsline{toc}{section}{Introduction}
+	  idcbdhbcfhbcvkfh
+	   	
+	
+	
+	
+	
+	%-----------------------------------------------------------------------------
+	% L’algorithme proposé
+	%-----------------------------------------------------------------------------
+	\newpage
+	\section*{L’algorithme proposé}
+	\addcontentsline{toc}{section}{Présentation générale de la solution}
+	\par{}
+	Pour connaître en une seule fois un grand nombre de nombres premiers consécutifs et pas trop grands (par exemple inférieurs à un milliard), on dispose d'une 	méthode vieille de plus de 2.000 ans : le crible d'Ératosthène.
+	\newline
+	\par{}
+	Le crible d'Ératosthène consiste à écrire tous les nombres d'un intervalle donné, puis à éliminer méthodiquement les multiples des nombres premiers successifs déjà connus, en s'arrêtant à la racine carrée de la borne supérieure de l'intervalle. Les nombres restants sont les nombres premiers de l'intervalle. C'est une bonne méthode, souvent utilisée pour constituer des listes de nombres premiers successifs, soit entre 2 et n (cas usuel), soit même entre deux bornes quelconques A et B.
+	\newline
+	\par{}
+	Algorithme du crible d’Ératosthène:\\
+	Pour connaître tous les nombres premiers jusqu'à n :
+	\begin{itemize}
+	\item écrire tous les entiers de 2 jusqu'à n ;
+	\item enlever tous les multiples de 2 sauf 2 ;
+	\item repérer le premier nombre plus grand que 2 encore présent, c'est-à-dire 3, et enlever tous les multiples de 3 sauf 3 ;
+	\item repérer le premier nombre plus grand que 3 encore présent, c'est-à-dire 5, et enlever tous les multiples de 5 sauf 5 ;
+	\item etc.
+	\item s'arrêter dès qu'on a atteint la racine carrée de n ;
+	\end{itemize}
+\par{}
+	ce qui reste est la table des nombres premiers jusqu'à n.
+	Les limites de cette méthode sont, là encore, fixées par l'espace mémoire dont on dispose et qui empêche de considérer des ensembles de nombres trop grands. On a récemment utilisé le crible pour compter exactement les nombres premiers jumeaux (c'est-à-dire séparés de deux unités, comme 11 et 13) inférieurs à 1015, ainsi que pour étudier les écarts entre les nombres premiers. À cette occasion, on a appliqué le crible par tranches de 1010 : après avoir sauvé les informations désirées, on effaçait les résultats du calcul de chacune de 100.000 tranches (sauf la première) afin de traiter la suivante.
+	
+
+%-----------------------------------------------------------------------------
+% Conclusion
+%-----------------------------------------------------------------------------
+\newpage
+\section*{ Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+	
+	
+\end{document}
