@@ -1,68 +1,40 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <libnet.h>
-#include <omp.h>
+#include "function_seq.h"
+#include "function_Parallele.c"
 
-void SieveOfEratosthenes_sequential(int n)
-{
-    /* Create a boolean array "prime[0..n]" and initialize
-     all entries it as true. A value in prime[i] will
-     finally be false if i is Not a prime, else true.*/
-    bool prime[n+1];
-    memset(prime, true, sizeof(prime));
+int verif(int tab1[], int tab2[], int size) {
 
-    for (int p=2; p*p<=n; p++)
-    {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true)
-        {
-            // Update all multiples of p
-            for (int i=p*2; i<=n; i += p)
-                prime[i] = false;
+    for (int counter = 0; counter < size; counter++) {
+        if (tab1[counter] != tab2[counter]) {
+            printf("%d", counter);
+            return 0;
         }
     }
-    // Print all prime numbers
-    for (int p=2; p<=n; p++)
-        if (prime[p])
-            printf("%d  \n",p);
+    return 1;
 }
-void SieveOfEratosthenes_parallel(int n)
 
-{
-    /* Create a boolean array "prime[0..n]" and initialize
-     all entries it as true. A value in prime[i] will
-     finally be false if i is Not a prime, else true.*/
-    bool prime[n+1];
-    memset(prime, true, sizeof(prime));
 
-    for (int p=2; p*p<=n; p++)
-    {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true)
-        {
-            // Update all multiples of p
-            for (int i=p*2; i<=n; i += p)
-                prime[i] = false;
-        }
-    }
-    // Print all prime numbers
-    for (int p=2; p<=n; p++)
-        if (prime[p])
-            printf("%d  \n",p);
-}
 int main() {
-    int n;
+    int n = 1000000;
     double start_time, end_time;
-    printf("Entrer la valeur de N :");
-    scanf("%d",&n);
-    printf("Following are the prime numbers smaller than or equal to %d \n " ,n);
+    //printf("How mush prime numbers would you like to find :\n");
+    //scanf("%d", &n);
+    int primeNumbers[n];
+    int primeNumbers1[n];
     start_time = omp_get_wtime();
-    SieveOfEratosthenes_sequential(n);
+    find_N_Prime_Numbers_seq(n, primeNumbers);
     end_time = omp_get_wtime();
-    printf(" sequential time=%f\n",end_time-start_time);
+    //printf("the %d first prime numbers are :\n", n);
+    //print_Prime_Numbers(primeNumbers, n);
+    printf("\n\n sequential time=%f\n", end_time - start_time);
     start_time = omp_get_wtime();
-    SieveOfEratosthenes_parallel(n);
+    find_N_Prime_Numbers_parallele(n, primeNumbers1);
     end_time = omp_get_wtime();
-    printf(" parallel time=%f\n",end_time-start_time);
+    printf(" parallel time=%f\n", end_time - start_time);
+    //printf("the %d first prime numbers are :\n", n);
+    //print_Prime_Numbers(primeNumbers1, n);
+    printf("verif :--------%d\n", verif(primeNumbers, primeNumbers1, n));
     return 0;
 }
+
+
